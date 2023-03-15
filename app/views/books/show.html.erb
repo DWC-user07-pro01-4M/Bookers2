@@ -2,8 +2,8 @@
 <h1>Book detail</h1>
 
 <div>
-  <p><%= @book.title %></p>
-  <p><%= @book.body %></p>
+  <p><%= Book.find(params[:id]).title %></p>
+  <p><%= Book.find(params[:id]).body %></p>
    <p>
      <%= link_to "Edit", edit_book_path %>
      <%= link_to "Destroy",books_path %>
