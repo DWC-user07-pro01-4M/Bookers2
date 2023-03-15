@@ -28,7 +28,7 @@
 
 <% @books.each do |book| %>
 <div>
-  <p><%= book.title %></p>
+  <p><%= link_to book.title ,book_path(book.id) %></p>
   <p><%= book.body %></p>
 </div>
 <% end %>

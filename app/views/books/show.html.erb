@@ -22,8 +22,8 @@
 
 <h1>Book detail</h1>
 <div>
-  <p><%= Book.find(params[:id]).title %></p>
-  <p><%= Book.find(params[:id]).body %></p>
+  <p><%= @book.title %></p>
+  <p><%= @book.body %></p>
 
 
       <%= link_to "Edit", edit_book_path %>

@@ -28,8 +28,8 @@
 
 <% @users.each do |user| %>
 <div>
-  <p><%= image_tag @user.get_profile_image(100,100) %></p>
+  <p><%= image_tag user.get_profile_image(100,100) %></p>
   <p><%= user.name %></p>
-  <p><%= link_to "Show", @user %></p>
+  <p><%= link_to "Show", user %></p>
 </div>
 <% end %>
