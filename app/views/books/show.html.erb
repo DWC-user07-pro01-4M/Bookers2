@@ -1,16 +1,14 @@
 <!--books/show-->
-<h1>Book detail</h1>
 <div>
-  <p><%= Book.find(params[:id]).title %></p>
-  <p><%= Book.find(params[:id]).body %></p>
-
-
-      <%= link_to "Edit", edit_book_path %>
-      <%= link_to "Destroy",book_path,method: :delete %>
-
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <h3><%= @user.name %></h3>
+  <h3><%= @user.introduction %></h3>
+  <% if @user == current_user %>
+    <p><%= link_to "ここにプロフィール編集のボタンがくる", edit_user_path(@user) %></p>
+  <% end %>
 </div>
 
-<%= form_with model: @book do |f| %>
+<%= form_with model: @book_new do |f| %>
 
     <h4>Title</h4><br>
       <%= f.text_field :title %>
@@ -21,3 +19,14 @@
     <%= f.submit 'Create Book' %>
 
   <% end %>
+
+<h1>Book detail</h1>
+<div>
+  <p><%= Book.find(params[:id]).title %></p>
+  <p><%= Book.find(params[:id]).body %></p>
+
+
+      <%= link_to "Edit", edit_book_path %>
+      <%= link_to "Destroy",book_path,method: :delete %>
+
+</div>

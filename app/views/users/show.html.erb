@@ -8,3 +8,27 @@
     <p><%= link_to "ここにプロフィール編集のボタンがくる", edit_user_path(@user) %></p>
   <% end %>
 </div>
+
+<h1>New Book</h1>
+  <%= form_with model: @book do |f| %>
+
+    <h4>Title</h4><br>
+      <%= f.text_field :title %>
+
+    <h4>Opinion</h4><br>
+      <%= f.text_area :body %>
+
+    <%= f.submit 'Create Book' %>
+
+  <% end %>
+
+<h1>Books</h1>
+<p>Title</p>
+<p>Opinion</p>
+
+<% @books.each do |book| %>
+<div>
+  <p><%= book.title %></p>
+  <p><%= book.body %></p>
+</div>
+<% end %>

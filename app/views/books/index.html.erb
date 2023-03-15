@@ -1,14 +1,13 @@
 <!--books/index-->
-<h1>Books</h1>
-<p>Title</p>
-<p>Opinion</p>
-
-<% @books.each do |book| %>
+<h1>User info</h1>
 <div>
-  <p><%= book.title %></p>
-  <p><%= book.body %></p>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <h3><%= @user.name %></h3>
+  <h3><%= @user.introduction %></h3>
+  <% if @user == current_user %>
+    <p><%= link_to "ここにプロフィール編集のボタンがくる", edit_user_path(@user) %></p>
+  <% end %>
 </div>
-<% end %>
 
 <h1>New Book</h1>
   <%= form_with model: @book do |f| %>
@@ -22,3 +21,14 @@
     <%= f.submit 'Create Book' %>
 
   <% end %>
+
+<h1>Books</h1>
+<p>Title</p>
+<p>Opinion</p>
+
+<% @books.each do |book| %>
+<div>
+  <p><%= book.title %></p>
+  <p><%= book.body %></p>
+</div>
+<% end %>
