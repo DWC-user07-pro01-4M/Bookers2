@@ -1,4 +1,16 @@
-<h1>Books show</h1>
+<!--books/show-->
+<h1>Book detail</h1>
+
+<div>
+  <p><%= @book.title %></p>
+  <p><%= @book.body %></p>
+   <p>
+     <%= link_to "Edit", edit_book_path %>
+     <%= link_to "Destroy",books_path %>
+   </p>
+
+</div>
+
 <%= form_with model: @book do |f| %>
 
     <h4>Title</h4><br>
