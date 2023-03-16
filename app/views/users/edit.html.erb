@@ -1,14 +1,33 @@
 <!--users/edit-->
-<h1>User info</h1>
-<%= form_with model: @user do |f| %>
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+<main>
+  <p id="notice"></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-xm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <h2>User info</h2>
+          <%= form_with model: @user do |f| %>
 
-  <label for="inputImage">Image</label>
-  <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+            <div class="fom-group">
+              <label for="inputName">Name</label>
+              <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+            </div>
 
-  <label for="inputName">Introduction</label>
-  <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %>
+            <div class="fom-group">
+              <label for="inputImage">Image</label>
+              <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+            </div>
 
-  <%= f.submit "Update User" %>
-<% end %>
+            <div class="fom-group">
+              <label for="inputName">Introduction</label>
+              <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %>
+            </div>
+
+            <div class="fom-group">
+              <%= f.submit "Update User" %>
+            </div>
+
+          <% end %>
+      </div>
+    </div>
+  </div>
+</main>
