@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+before_action :authenticate_user!
   # users一覧
   def index
     @users = User.all
@@ -13,10 +14,14 @@ class UsersController < ApplicationController
   end
  # users編集
   def edit
+    is_matching_login_user
+    @user = current_user
     @user = User.find(params[:id])
   end
  # users更新
   def update
+    is_matching_login_user
+    @user = current_user
     @user = User.find(params[:id])
     @user.update(user_params)
     if @user.save

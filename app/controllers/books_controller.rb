@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+before_action :authenticate_user!
 # books投稿一覧
   def index
     @books = Book.all
@@ -27,10 +28,12 @@ class BooksController < ApplicationController
   end
 # books編集
   def edit
+    is_matching_login_user
     @books = Book.find(params[:id])
   end
   # books更新
   def update
+    is_matching_login_user
     @book = Book.find(params[:id])
     @book.update(book_params)
     if@book.save
