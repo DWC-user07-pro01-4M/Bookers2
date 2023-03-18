@@ -28,18 +28,16 @@ before_action :authenticate_user!
   end
 # books編集
   def edit
-    @books = Book.find(params[:id])
+    @book = Book.find(params[:id])
   end
   # books更新
   def update
     @book = Book.find(params[:id])
-    @book.update(book_params)
-    if@book.save
+    if @book.update(book_params)
       flash[:notice] = "You have updated book successfully."
       redirect_to book_path(@book.id)
     else
-      @book = Book.find(params[:id])
-      render :show
+      render :edit
     end
   end
   # books削除
