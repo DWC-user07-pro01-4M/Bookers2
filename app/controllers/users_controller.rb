@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-before_action :authenticate_user!
   # users一覧
   def index
     @users = User.all
@@ -14,12 +13,12 @@ before_action :authenticate_user!
   end
  # users編集
   def edit
-    @user = current_user
+    is_matching_login_user
     @user = User.find(params[:id])
   end
  # users更新
   def update
-    @user = current_user
+    is_matching_login_user
     @user = User.find(params[:id])
     @user.update(user_params)
     if @user.save
@@ -34,6 +33,13 @@ private
 
 def user_params
   params.require(:user).permit(:name, :profile_image, :introduction)
+end
+
+def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+    redirect_to user_path(current_user.id)
+    end
 end
 
 end
